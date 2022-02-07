@@ -1,7 +1,10 @@
+import { BrowserRouter } from 'react-router-dom'
+import { AppRouter } from './routers/AppRouter'
+
 export const JornalApp = (props: {}) => {
   return (
-    <div>
-      <h1>Jornal App</h1>
-    </div>
+    <BrowserRouter>
+      <AppRouter />
+    </BrowserRouter>
   )
 }
