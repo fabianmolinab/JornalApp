@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom'
 
 export const LoginScreen = (props: {}) => {
   return (
-    <div>
+    <>
       <h3 className="auth__title">Login</h3>
       <form>
         <input
           className="auth__input"
           type="text"
-          placeholder="email"
+          placeholder="Email"
           name="email"
           autoComplete="off"
         />
@@ -18,11 +18,9 @@ export const LoginScreen = (props: {}) => {
           placeholder="Password"
           name="password"
         />
-        <button className="btn btn-primary" type="submit">
+        <button className="btn btn-primary mb-1" type="submit">
           Login
         </button>
-
-        <hr />
 
         <div className="auth__social-networks">
           <p>Login with social networks</p>
@@ -45,6 +43,6 @@ export const LoginScreen = (props: {}) => {
           Create new account
         </Link>
       </form>
-    </div>
+    </>
   )
 }
