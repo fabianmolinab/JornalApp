@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 export const LoginScreen = (props: {}) => {
   return (
-    <div>
+    <>
       <h3 className="auth__title">Login</h3>
       <form>
         <input
@@ -45,6 +45,6 @@ export const LoginScreen = (props: {}) => {
           Create new account
         </Link>
       </form>
-    </div>
+    </>
   )
 }
