@@ -36,7 +36,9 @@ export const RegisterScreen = (props: {}) => {
         />
 
         <button className="btn btn-primary" type="submit">
+
           Register
+
         </button>
 
         <Link className="links mt-5" to="/auth/login">
