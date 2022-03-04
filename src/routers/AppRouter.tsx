@@ -5,8 +5,8 @@ import { AuthRouter } from './AuthRouter'
 export const AppRouter = (props: {}) => {
   return (
     <Switch>
-      <Route path="/auth" component={AuthRouter} />
-      <Route path="/" component={JornalScreen} exact />
+      <Route exact path="/auth" component={AuthRouter} />
+      <Route path="/" component={JornalScreen} />
     </Switch>
   )
 }

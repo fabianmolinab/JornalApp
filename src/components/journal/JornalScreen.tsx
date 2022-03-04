@@ -1,7 +1,13 @@
+import { Sidebar } from './Sidebar'
+
 export const JornalScreen = (props: {}) => {
   return (
-    <div>
-      <h1>JornalScreen</h1>
+    <div className="journal__main-content">
+      <Sidebar />
+
+      <main>
+        <h1>Main content</h1>
+      </main>
     </div>
   )
 }
