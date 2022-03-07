@@ -6,8 +6,15 @@
   cursor: pointer;
   font-size: 14px;
   padding: 10px;
+
+  transition: all .8s ease;
   &:focus {
     outline: none;
+  }
+
+  &:hover {
+    font-weight: bold;
+    color: darken($color: white, $amount: 15);
   }
 }
 
