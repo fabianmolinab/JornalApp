@@ -8,13 +8,20 @@ import { types } from '../types/types'
  * }
  *
  * */
+type AuthReducerAction = {
+  type: '[Auth] Login' | '[Auth] Logout';
+  payload: {
+    uid: number;
+    name: string;
+  };
+};
 
-export const authReducer = (state = {}, action: any) => {
+export const authReducer = (state = {}, action: AuthReducerAction) => {
   switch (action.type) {
     case types.login:
       return {
         uid: action.payload.uid,
-        name: action.payload.displayName
+        name: action.payload.name
       }
 
     case types.logout:

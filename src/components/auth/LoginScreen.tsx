@@ -1,5 +1,7 @@
-import { ChangeEvent } from 'react'
+import { ChangeEvent, FC } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { login } from '../../actions/auth'
 import { useForm } from '../../hooks/useForm'
 
 interface FormData {
@@ -7,23 +9,26 @@ interface FormData {
   password: string;
 }
 
-export const LoginScreen = (props: {}) => {
+export const LoginScreen: FC = () => {
+  // Use Dispach Hook que realiza el dispatch de la accion en cualquier lugar
+  const dispach = useDispatch()
+
   const { email, password, handleInputChange, reset } = useForm<FormData>({
     email: '',
     password: ''
   })
 
-  type HandleSubmitEvent = ChangeEvent<HTMLFormElement>;
+  type HandleLoginEvent = ChangeEvent<HTMLFormElement>;
 
-  const handleInputSubmit = (e: HandleSubmitEvent) => {
+  const handleLogin = (e: HandleLoginEvent) => {
     e.preventDefault()
-    reset()
+    dispach(login(1234, 'Fabian'))
   }
 
   return (
     <>
       <h3 className="auth__title">Login</h3>
-      <form onSubmit={handleInputSubmit}>
+      <form onSubmit={handleLogin}>
         <input
           className="auth__input"
           type="email"
@@ -62,7 +67,6 @@ export const LoginScreen = (props: {}) => {
             <p className="btn-text">
               <b>Sign in with google</b>
             </p>
-
           </div>
         </div>
         <Link className="links" to="/auth/register">

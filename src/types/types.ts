@@ -1,6 +1,6 @@
-interface Object {
-  login: string;
-  logout: string;
+type Object = {
+  login: string,
+  logout: string
 }
 
 export const types: Object = {
