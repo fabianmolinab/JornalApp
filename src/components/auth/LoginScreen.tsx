@@ -1,8 +1,9 @@
 import { ChangeEvent, Dispatch, FC } from 'react'
-import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { startLoginEmailPassword } from '../../actions/auth'
+import { useAppDispatch } from '../../hooks/hooks'
 import { useForm } from '../../hooks/useForm'
+import { AppDispatch } from '../../store/store'
 
 interface FormData {
   email: string;
@@ -11,7 +12,7 @@ interface FormData {
 
 export const LoginScreen: FC = () => {
   // Use Dispach Hook que realiza el dispatch de la accion en cualquier lugar
-  const dispach = useDispatch()
+  const dispach = useAppDispatch()
 
   const { email, password, handleInputChange } = useForm<FormData>({
     email: '',

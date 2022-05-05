@@ -11,9 +11,12 @@ interface AccionLogin {
 
 type DispatchType = (value: AnyAction) => void;
 
-type StartLoginType = (email: String, Password: String) => any;
+type StartLoginEmailType = (email: String, Password: String) => any;
 
-export const startLoginEmailPassword: StartLoginType = (email, password) => {
+export const startLoginEmailPassword: StartLoginEmailType = (
+  email,
+  password
+) => {
   return (dispatch: DispatchType) => {
     setTimeout(() => {
       dispatch(login(123, 'fabian'))
