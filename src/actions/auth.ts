@@ -1,10 +1,12 @@
 import { AnyAction } from 'redux'
 import { types } from '../types/types'
+import { googleAuthProvider } from '../firebase/firebase-config.js'
+import { getAuth, signInWithPopup } from 'firebase/auth'
 
 interface AccionLogin {
   type: string;
   payload: {
-    uid: number;
+    uid: string;
     name: string;
   };
 }
@@ -19,12 +21,22 @@ export const startLoginEmailPassword: StartLoginEmailType = (
 ) => {
   return (dispatch: DispatchType) => {
     setTimeout(() => {
-      dispatch(login(123, 'fabian'))
+      dispatch(login('123', 'fabian'))
     }, 3500)
   }
 }
 
-export const login = (uid: number, name: string): AccionLogin => {
+export const startGoogleLogin = (): any => {
+  return (dispatch: DispatchType) => {
+    const auth = getAuth()
+    signInWithPopup(auth, googleAuthProvider).then((result) => {
+      const { user } = result
+      dispatch(login(user.uid, user.displayName))
+    })
+  }
+}
+
+export const login = (uid: string, name: string): AccionLogin => {
   return {
     type: types.login,
     payload: {
