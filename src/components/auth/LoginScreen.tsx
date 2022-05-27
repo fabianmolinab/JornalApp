@@ -1,16 +1,15 @@
-import { ChangeEvent, Dispatch, FC } from 'react'
+import React, { ChangeEvent, FC } from 'react'
 import { Link } from 'react-router-dom'
 import { startGoogleLogin, startLoginEmailPassword } from '../../actions/auth'
 import { useAppDispatch } from '../../hooks/hooks'
 import { useForm } from '../../hooks/useForm'
-import { AppDispatch } from '../../store/store'
 
 interface FormData {
   email: string;
   password: string;
 }
 
-export const LoginScreen: FC = () => {
+export const LoginScreen: React.FC = () => {
   // Use Dispach Hook que realiza el dispatch de la accion en cualquier lugar
   const dispach = useAppDispatch()
 
