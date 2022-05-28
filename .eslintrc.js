@@ -3,6 +3,7 @@ const RULES = {
   WARN: 'warn',
   ERROR: 'error'
 }
+
 module.exports = {
   env: {
     browser: true,
@@ -38,6 +39,8 @@ module.exports = {
         memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single'],
         allowSeparatedGroups: false
       }
-    ]
+    ],
+    'padded-blocks': [RULES.OFF]
+
   }
 }
