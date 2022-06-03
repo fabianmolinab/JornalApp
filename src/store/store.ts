@@ -1,20 +1,23 @@
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux'
 import thunk from 'redux-thunk'
 import { authReducer } from '../reducers/authReducer'
+import { uiReducer } from '../reducers/uiReducer'
+
+/* Redux Developer Tools
+*/
 
 const composeEnhancers =
   (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const reducers = combineReducers({
-  auth: authReducer
+  auth: authReducer,
+  ui: uiReducer
 })
 
-/* eslint-disable no-underscore-dangle */
 export const store = createStore(
   reducers,
   composeEnhancers(applyMiddleware(thunk))
 )
-/* eslint-enable */
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;

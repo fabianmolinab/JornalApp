@@ -1,7 +1,10 @@
 import React, { ChangeEvent } from 'react'
+import { useAppDispatch } from '../../hooks/hooks'
 import { Link } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
 import validator from 'validator'
+import { removeError, setError } from '../../actions/ui'
+import { Dispatch } from 'redux'
 
 interface FormData {
   name: string;
@@ -29,23 +32,27 @@ export const RegisterScreen: React.FC = () => {
     }
   }
 
+  const dispach: Dispatch = useAppDispatch()
+
   const isFormValid = (): boolean => {
+
     if (name.trim().length === 0) {
 
-      console.log('Formulario is required')
-
+      dispach(setError('Formulario is required'))
       return false
+
     } else if (!validator.isEmail(email)) {
 
-      console.log('Email is required')
-
+      dispach(setError('Email is required'))
       return false
+
     } else if (password !== password2 || password.length < 5) {
 
-      console.log('Password should be at least 6 characters and match each')
-
+      dispach(setError('Password should be at least 6 characters and match each'))
       return false
+
     }
+    dispach(removeError())
     return true
   }
 
@@ -54,6 +61,11 @@ export const RegisterScreen: React.FC = () => {
       <h3 className="auth__title">Register</h3>
 
       <form onSubmit={handleRegister}>
+
+        <div className='auth__alert-error'>
+          Hola mundo
+        </div>
+
         <input
           className="auth__input"
           type="text"
