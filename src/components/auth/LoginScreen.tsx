@@ -1,5 +1,6 @@
 import React, { ChangeEvent } from 'react'
 import { Link } from 'react-router-dom'
+import { Dispatch } from 'redux'
 import { startGoogleLogin, startLoginEmailPassword } from '../../actions/auth'
 import { useAppDispatch } from '../../hooks/hooks'
 import { useForm } from '../../hooks/useForm'
@@ -11,7 +12,7 @@ interface FormData {
 
 export const LoginScreen: React.FC = () => {
   // Use Dispach Hook que realiza el dispatch de la accion en cualquier lugar
-  const dispach = useAppDispatch()
+  const dispach:Dispatch = useAppDispatch()
 
   const { email, password, handleInputChange } = useForm<FormData>({
     email: '',

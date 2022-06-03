@@ -1,13 +1,5 @@
 import { types } from '../types/types'
 
-/*
- *
- * {
- *  uid: 'kjsflkjslkjf',
- *  name: 'Fabian'
- * }
- *
- * */
 type AuthReducerAction = {
   type: '[Auth] Login' | '[Auth] Logout';
   payload: {
