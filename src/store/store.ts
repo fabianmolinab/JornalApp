@@ -4,6 +4,7 @@ import { authReducer } from '../reducers/authReducer'
 import { uiReducer } from '../reducers/uiReducer'
 
 /* Redux Developer Tools
+* Configuración  para que funcione el Redux DevTools con Typescript
 */
 
 const composeEnhancers =

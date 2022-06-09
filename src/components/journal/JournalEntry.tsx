@@ -1,4 +1,6 @@
-export const JournalEntry = (props: {}) => {
+import React from 'react'
+
+export const JournalEntry: React.FC = (props: {}) => {
   return (
     <div className="journal__entry pointer">
       <div

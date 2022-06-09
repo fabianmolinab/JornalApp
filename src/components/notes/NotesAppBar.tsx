@@ -1,4 +1,6 @@
-export const NotesAppBar = (props: {}) => {
+import React from 'react'
+
+export const NotesAppBar: React.FC = (props: {}) => {
   return (
     <div className="notes__appbar">
       <span>28 de agosto 2022</span>

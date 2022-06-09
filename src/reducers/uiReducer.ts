@@ -4,16 +4,16 @@ import { types } from '../types/types'
 
 type InitialStateType = {
   loading: boolean;
-  nsgError: string;
+  msgError: string;
 }
 
-const initialState = {
+const initialState: InitialStateType = {
   loading: false,
   msgError: ''
 }
 
 // ----- Reducer
-type AuthReducerAction = {
+type UIReducerAction = {
   type: '[UI] uiSetError' | '[UI] uiRemoveError';
   payload: {
     state: InitialStateType;
@@ -21,7 +21,7 @@ type AuthReducerAction = {
   }
 }
 
-export const uiReducer = (state = initialState, action: AuthReducerAction) => {
+export const uiReducer = (state = initialState, action: UIReducerAction) => {
 
   switch (action.type) {
     case types.uiSetError:

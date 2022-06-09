@@ -1,6 +1,7 @@
+import React from 'react'
 import { JournalEntry } from './JournalEntry'
 
-export const JournalEntries = () => {
+export const JournalEntries: React.FC = () => {
   const entries = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   return (

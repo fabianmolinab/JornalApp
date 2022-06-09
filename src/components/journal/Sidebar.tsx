@@ -1,6 +1,7 @@
+import React from 'react'
 import { JournalEntries } from './JournalEntries'
 
-export const Sidebar = (props: {}) => {
+export const Sidebar: React.FC = (props: {}) => {
   return (
     <aside className="journal__sidebar">
       <div className="journal__side-navbar">

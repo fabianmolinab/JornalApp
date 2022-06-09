@@ -1,6 +1,6 @@
 import { NotesAppBar } from './NotesAppBar'
 
-export const NoteScreen = (props: {}) => {
+export const NoteScreen: React.FC = (props: {}) => {
   return (
     <div className="notes__main-content">
       <NotesAppBar />

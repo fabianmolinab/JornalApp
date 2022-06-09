@@ -1,4 +1,6 @@
-export const NothingSelected = (props: {}) => {
+import React from 'react'
+
+export const NothingSelected: React.FC = (props: {}) => {
   return (
     <main className="nothing__main-content">
       <p>
