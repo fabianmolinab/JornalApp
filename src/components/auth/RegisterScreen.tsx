@@ -7,6 +7,7 @@ import { removeError, setError } from '../../actions/ui'
 import { Dispatch } from 'redux'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store/store'
+import { starRegisterWithEmailPasswordName } from '../../actions/auth'
 
 interface FormData {
   name: string;
@@ -28,15 +29,20 @@ export const RegisterScreen: React.FC = () => {
 
   type HandleRegisterEvent = ChangeEvent<HTMLFormElement>;
 
+  const dispach: Dispatch = useAppDispatch()
+
+  /*
+   *TODO: Arreglar los errores de tipado en el dispach startRegister
+   *
+   */
+
   const handleRegister = (e: HandleRegisterEvent) => {
     e.preventDefault()
 
     if (isFormValid()) {
-      reset()
+      dispach(starRegisterWithEmailPasswordName(email, password, name))
     }
   }
-
-  const dispach: Dispatch = useAppDispatch()
 
   // useSelector: Se utiliza para mostrar el estado que querramos
   const stateSelector = (state: RootState) => state.ui
