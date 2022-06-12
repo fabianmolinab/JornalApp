@@ -1,10 +1,9 @@
-import React, { ChangeEvent } from 'react'
+import React, { ChangeEvent, Dispatch } from 'react'
 import { useAppDispatch } from '../../hooks/hooks'
 import { Link } from 'react-router-dom'
 import { useForm } from '../../hooks/useForm'
 import validator from 'validator'
 import { removeError, setError } from '../../actions/ui'
-import { Dispatch } from 'redux'
 import { useSelector } from 'react-redux'
 import { RootState } from '../../store/store'
 import { starRegisterWithEmailPasswordName } from '../../actions/auth'
@@ -29,18 +28,13 @@ export const RegisterScreen: React.FC = () => {
 
   type HandleRegisterEvent = ChangeEvent<HTMLFormElement>;
 
-  const dispach: Dispatch = useAppDispatch()
-
-  /*
-   *TODO: Arreglar los errores de tipado en el dispach startRegister
-   *
-   */
+  const dispatch: Dispatch<any> = useAppDispatch()
 
   const handleRegister = (e: HandleRegisterEvent) => {
     e.preventDefault()
 
     if (isFormValid()) {
-      dispach(starRegisterWithEmailPasswordName(email, password, name))
+      dispatch(starRegisterWithEmailPasswordName(email, password, name))
     }
   }
 
@@ -51,19 +45,19 @@ export const RegisterScreen: React.FC = () => {
   const isFormValid = (): boolean => {
 
     if (name.trim().length === 0) {
-      dispach(setError('Name is required'))
+      dispatch(setError('Name is required'))
       return false
 
     } else if (!validator.isEmail(email)) {
-      dispach(setError('Email is required'))
+      dispatch(setError('Email is required'))
       return false
 
     } else if (password !== password2 || password.length < 5) {
 
-      dispach(setError('Password should be at least 6 characters and match each'))
+      dispatch(setError('Password should be at least 6 characters and match each'))
       return false
     }
-    dispach(removeError())
+    dispatch(removeError())
     return true
   }
 

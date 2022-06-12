@@ -1,6 +1,6 @@
 import { types } from '../types/types'
 
-type AuthReducerAction = {
+export type AuthReducerAction = {
   type: '[Auth] Login' | '[Auth] Logout';
   payload: {
     uid: number;
