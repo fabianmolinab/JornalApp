@@ -38,9 +38,10 @@ export const RegisterScreen: React.FC = () => {
     }
   }
 
-  // useSelector: Se utiliza para mostrar el estado que querramos
+  // useSelector: Permite extraer los datos del estado del store de Redux
+
   const stateSelector = (state: RootState) => state.ui
-  const stateGeneral = useSelector(stateSelector)
+  const { msgError } = useSelector(stateSelector)
 
   const isFormValid = (): boolean => {
 
@@ -67,9 +68,9 @@ export const RegisterScreen: React.FC = () => {
 
       <form onSubmit={handleRegister}>
         {
-          stateGeneral.msgError !== '' && (
+          msgError !== '' && (
             <div className='auth__alert-error'>
-              {stateGeneral.msgError}
+              {msgError}
             </div>
           )
         }

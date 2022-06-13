@@ -3,8 +3,8 @@ import { types } from '../types/types'
 // ---- InitialState
 
 type InitialStateType = {
-  loading: boolean;
-  msgError: string;
+  loading: boolean
+  msgError: string
 }
 
 const initialState: InitialStateType = {
@@ -14,9 +14,9 @@ const initialState: InitialStateType = {
 
 // ----- Reducer
 type UIReducerAction = {
-  type: '[UI] uiSetError' | '[UI] uiRemoveError';
+  type: '[UI] uiSetError' | '[UI] uiRemoveError' | '[UI] Start Loading' | '[UI] Finish Loading'
   payload: {
-    state: InitialStateType;
+    state: InitialStateType
     msgError: string
   }
 }
@@ -34,6 +34,18 @@ export const uiReducer = (state = initialState, action: UIReducerAction) => {
       return {
         ...state,
         msgError: ''
+      }
+
+    case types.uiStartLoading:
+      return {
+        ...state,
+        loading: true
+      }
+
+    case types.uiFinishLoading:
+      return {
+        ...state,
+        loading: false
       }
 
     default:

@@ -1,8 +1,10 @@
 import React, { ChangeEvent, Dispatch } from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { startGoogleLogin, startLoginEmailPassword } from '../../actions/auth'
 import { useAppDispatch } from '../../hooks/hooks'
 import { useForm } from '../../hooks/useForm'
+import { RootState } from '../../store/store'
 
 interface FormData {
   email: string;
@@ -12,6 +14,11 @@ interface FormData {
 export const LoginScreen: React.FC = () => {
   // Use Dispach Hook que realiza el dispatch de la accion en cualquier lugar
   const dispatch: Dispatch<any> = useAppDispatch()
+
+  // Este useSelector nos permite extraer los datos del store, en este caso para bloquear el boton cuando se está cargando un nuevo usuuario
+
+  const stateSelector = (state: RootState) => state.ui
+  const { loading } = useSelector(stateSelector)
 
   const { email, password, handleInputChange } = useForm<FormData>({
     email: '',
@@ -52,7 +59,9 @@ export const LoginScreen: React.FC = () => {
           value={password}
         />
 
-        <button className="btn btn-primary mb-1" type="submit">
+        <button className="btn btn-primary mb-1"
+          type="submit"
+          disabled={loading}>
           Login
         </button>
 

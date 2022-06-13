@@ -2,6 +2,7 @@ import { AnyAction } from 'redux'
 import { types } from '../types/types'
 import { googleAuthProvider } from '../firebase/firebase-config.js'
 import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth'
+import { finishLoading, startLoading } from './ui'
 
 interface AccionLogin {
   type: string;
@@ -21,13 +22,20 @@ export const startLoginEmailPassword: StartLoginEmailType = (
 ) => {
   return (dispatch) => {
 
+    dispatch(startLoading())
+
     const auth = getAuth()
 
     signInWithEmailAndPassword(auth, email, password)
       .then(({ user }) => {
         dispatch(login(user.uid, user.displayName))
+
+        dispatch(finishLoading())
       })
-      .catch(e => console.log(e))
+      .catch(e => {
+        console.log(e)
+        dispatch(finishLoading())
+      })
   }
 }
 
