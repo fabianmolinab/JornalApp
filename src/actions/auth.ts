@@ -23,19 +23,19 @@ export const startLoginEmailPassword: StartLoginEmailType = (
   return (dispatch) => {
 
     dispatch(startLoading())
-
     const auth = getAuth()
 
     signInWithEmailAndPassword(auth, email, password)
+
       .then(({ user }) => {
         dispatch(login(user.uid, user.displayName))
-
         dispatch(finishLoading())
       })
       .catch(e => {
         console.log(e)
         dispatch(finishLoading())
       })
+
   }
 }
 

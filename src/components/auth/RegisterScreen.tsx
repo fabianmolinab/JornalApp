@@ -17,7 +17,7 @@ interface FormData {
 
 export const RegisterScreen: React.FC = () => {
 
-  const { name, email, password, password2, handleInputChange, reset } =
+  const { name, email, password, password2, handleInputChange } =
 
     useForm<FormData>({
       name: '',
