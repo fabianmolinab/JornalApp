@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { Dispatch } from 'react'
+import { startLogout } from '../../actions/auth'
+import { useAppDispatch } from '../../hooks/hooks'
 import { JournalEntries } from './JournalEntries'
 
-export const Sidebar: React.FC = (props: {}) => {
+export const Sidebar: React.FC = () => {
+
+  const dispatch: Dispatch<any> = useAppDispatch()
+
+  const handleLogout = () => {
+
+    dispatch(startLogout())
+  }
   return (
     <aside className="journal__sidebar">
       <div className="journal__side-navbar">
@@ -10,7 +19,7 @@ export const Sidebar: React.FC = (props: {}) => {
           <span className="ml-1">Fabian</span>
         </h3>
 
-        <button className="btn">Logout</button>
+        <button className="btn" onClick={handleLogout}>Logout</button>
       </div>
 
       <div className="journal__new-entry">

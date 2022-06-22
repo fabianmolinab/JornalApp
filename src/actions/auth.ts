@@ -1,7 +1,7 @@
 import { AnyAction } from 'redux'
 import { types } from '../types/types'
 import { googleAuthProvider } from '../firebase/firebase-config.js'
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 import { finishLoading, startLoading } from './ui'
 
 interface AccionLogin {
@@ -87,3 +87,21 @@ export const login = (uid: string, name: string | null): AccionLogin => {
     }
   }
 }
+
+// Accion cerrar Seccion
+export const startLogout = () => {
+  return async (dispatch: DispatchType) => {
+    const auth = getAuth()
+
+    await signOut(auth).then(() => {
+      dispatch(logout())
+    })
+      .catch(e => {
+        console.log(e)
+      })
+  }
+}
+
+export const logout = () => ({
+  type: types.logout
+})
