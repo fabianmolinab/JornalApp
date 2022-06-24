@@ -5,16 +5,16 @@ import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, si
 import { finishLoading, startLoading } from './ui'
 
 interface AccionLogin {
-  type: string;
+  type: string
   payload: {
-    uid: string;
-    name: string | null;
-  };
+    uid: string
+    name: string | null
+  }
 }
 
-type DispatchType = (value: AnyAction) => void;
+type DispatchType = (value: AnyAction) => void
 
-type StartLoginEmailType = (email: string, password: string) => (dispatch: DispatchType) => void;
+type StartLoginEmailType = (email: string, password: string) => (dispatch: DispatchType) => void
 
 export const startLoginEmailPassword: StartLoginEmailType = (
   email,

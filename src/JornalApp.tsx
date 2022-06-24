@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { AppRouter } from './routers/AppRouter'
 import { store } from './store/store'
 
-export const JornalApp: React.FC = (props: {}) => {
+export const JornalApp: React.FC = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
