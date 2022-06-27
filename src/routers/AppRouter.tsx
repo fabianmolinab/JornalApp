@@ -1,16 +1,22 @@
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import React, { useEffect, useState } from 'react'
+
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { useDispatch } from 'react-redux'
-import { Route, Switch } from 'react-router-dom'
+import { Switch } from 'react-router-dom'
 import { login } from '../actions/auth'
 import { JornalScreen } from '../components/journal/JornalScreen'
 import { AuthRouter } from './AuthRouter'
+import { PrivateRoute } from './PrivateRoute'
+import { PublicRoute } from './PublicRoute'
 
 export const AppRouter: React.FC = () => {
 
   const dispatch = useDispatch()
 
+  // Estado que cambia al estar autenticando el login
   const [checking, setChecking] = useState(true)
+
+  // Estado que cambia al estar logeado
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   // useEffect solo se dispara al iniciar la aplicación se encarga de mantener el estado de la autenticación
@@ -36,8 +42,9 @@ export const AppRouter: React.FC = () => {
 
   return (
     <Switch>
-      <Route path="/auth" component={AuthRouter} />
-      <Route path="/" component={JornalScreen} />
+      <PublicRoute path="/auth" isAutheticated={isLoggedIn} component={AuthRouter} />
+
+      <PrivateRoute path="/" isAutheticated={isLoggedIn} component={JornalScreen} />
     </Switch>
   )
 }

@@ -6,13 +6,13 @@ interface Props extends RouteProps {
   component: React.FunctionComponent
 }
 
-export const PrivateRoute: React.FC<Props> = ({ isAutheticated, component: Component, ...rest }) => {
+export const PublicRoute: React.FC<Props> = ({ isAutheticated, component: Component, ...rest }) => {
   return (
     <Route {...rest}
       component={(props: any) => (
-        (isAutheticated)
+        (!isAutheticated)
           ? (<Component {...props} />)
-          : (<Redirect to="/auth/login" />)
+          : (<Redirect to="/" />)
       )}
     />
   )
